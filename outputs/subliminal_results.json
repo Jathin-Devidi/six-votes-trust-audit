@@ -1,0 +1,83 @@
+{
+  "config": {
+    "hidden": 128,
+    "n_aux": 3,
+    "seeds": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "per_seed": [
+    {
+      "seed": 0,
+      "untrained_acc": 0.11083123425692695,
+      "teacher_acc": 0.9622166246851386,
+      "student_same_init_acc": 0.871536523929471,
+      "student_diff_init_acc": 0.14105793450881612
+    },
+    {
+      "seed": 1,
+      "untrained_acc": 0.06801007556675064,
+      "teacher_acc": 0.9773299748110831,
+      "student_same_init_acc": 0.9193954659949622,
+      "student_diff_init_acc": 0.14105793450881612
+    },
+    {
+      "seed": 2,
+      "untrained_acc": 0.10075566750629723,
+      "teacher_acc": 0.9672544080604534,
+      "student_same_init_acc": 0.9496221662468514,
+      "student_diff_init_acc": 0.08060453400503778
+    },
+    {
+      "seed": 3,
+      "untrained_acc": 0.08312342569269521,
+      "teacher_acc": 0.9748110831234257,
+      "student_same_init_acc": 0.9168765743073047,
+      "student_diff_init_acc": 0.11838790931989925
+    },
+    {
+      "seed": 4,
+      "untrained_acc": 0.04030226700251889,
+      "teacher_acc": 0.9697732997481109,
+      "student_same_init_acc": 0.947103274559194,
+      "student_diff_init_acc": 0.07808564231738035
+    }
+  ],
+  "mean": {
+    "untrained_acc": 0.08060453400503778,
+    "teacher_acc": 0.9702770780856425,
+    "student_same_init_acc": 0.9209068010075565,
+    "student_diff_init_acc": 0.11183879093198992
+  },
+  "own_experiment": {
+    "question": "How much of the teacher's starting weights must a noise-trained student share for the hidden skill to transfer?",
+    "hypothesis": "I expected a smooth, roughly proportional fade: sharing 50% of the initial weights would give about half the accuracy gain of a full copy, and 0% would stay near the untrained level.",
+    "conditions": [
+      {
+        "label": "0% of initial weights shared with the teacher",
+        "value": 0.0,
+        "student_acc_mean": 0.11183879093198992
+      },
+      {
+        "label": "50% of initial weights shared with the teacher",
+        "value": 0.5,
+        "student_acc_mean": 0.09370277078085643
+      },
+      {
+        "label": "90% of initial weights shared with the teacher",
+        "value": 0.9,
+        "student_acc_mean": 0.6977329974811083
+      },
+      {
+        "label": "100% of initial weights shared with the teacher",
+        "value": 1.0,
+        "student_acc_mean": 0.9209068010075565
+      }
+    ],
+    "conclusion": "Mean student accuracy: 0% shared 0.112, 50% 0.094, 90% 0.698, 100% 0.921 (untrained 0.081). A proportional fade would put 50% near 0.516; instead it sat at chance level, so my hypothesis was wrong: the hidden channel needs the starting weights to be almost identical, and breaks well before they are completely different."
+  }
+}
